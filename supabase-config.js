@@ -3,4 +3,5 @@
 // NUNCA cole uma chave secreta (sb_secret_...) neste arquivo.
 window.PROJETO_ATIVA_CONFIG = {
   url: 'https://ewgqlchnvdnbuovjrlef.supabase.co',
-  publishableKey: sb_publishable_
+ publishableKey: 'sb_publishable_yS7mwZ1f7AsDcPADQFtpIg_EV-ns8kB',
+};
