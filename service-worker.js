@@ -1,7 +1,8 @@
-const CACHE_NAME = 'projeto-ativa-v1';
+const CACHE_NAME = 'projeto-ativa-v2-auth';
 const APP_FILES = [
   './',
   './index.html',
+  './supabase-config.js',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png'

@@ -41,3 +41,14 @@ Depois de editar arquivos, envie as alterações ao mesmo repositório. O navega
 
 ## Próxima etapa recomendada
 Depois de validar com um pequeno grupo, implementar autenticação e banco de dados (por exemplo, Supabase), incluindo regras de acesso por usuário e política de privacidade antes de recolher dados pessoais. A versão PWA estática atual não é ainda adequada para tratar contas ou dados sensíveis.
+
+
+## Cadastro e sincronização com Supabase (integração inicial)
+
+1. Abra `supabase-config.js` e substitua `COLE_A_CHAVE_PUBLICAVEL_AQUI` pela chave `sb_publishable_...` em Supabase → Configurações → Chaves de API. Nunca use `sb_secret_...` no navegador.
+2. Confirme que a tabela `public.user_app_data` existe e tem RLS ativado com políticas SELECT/INSERT/UPDATE limitadas a `auth.uid() = user_id`.
+3. Envie `index.html`, `supabase-config.js` e `service-worker.js` para a raiz do repositório GitHub Pages, substituindo os arquivos anteriores.
+4. Aguarde o GitHub Pages atualizar e recarregue o app. Em Ajustes, use Criar conta/Entrar.
+5. Se a confirmação por e-mail estiver ativa, confirme o e-mail antes de entrar.
+
+Esta é uma integração inicial para teste. Antes de divulgar amplamente, valide cadastro, confirmação de e-mail, login, sincronização em dois navegadores e recuperação de senha. Não armazene informações sensíveis. A chave publicável é destinada ao cliente, mas a segurança depende das políticas RLS corretas. O app mantém o armazenamento local; no primeiro login, se já houver dados na nuvem, ele pergunta qual conjunto manter.
