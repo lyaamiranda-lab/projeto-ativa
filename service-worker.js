@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v4-rotina-personalizada';
+const CACHE_NAME = 'projeto-ativa-v5-campos-rotina';
 const APP_FILES = [
   './',
   './index.html',
