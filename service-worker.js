@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v3-password-reset';
+const CACHE_NAME = 'projeto-ativa-v4-rotina-personalizada';
 const APP_FILES = [
   './',
   './index.html',
