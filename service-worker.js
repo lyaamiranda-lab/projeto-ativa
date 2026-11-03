@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v6-layout-rotina';
+const CACHE_NAME = 'projeto-ativa-v7-rotina-cards';
 const APP_FILES = [
   './',
   './index.html',
