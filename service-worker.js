@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v2-auth';
+const CACHE_NAME = 'projeto-ativa-v3-password-reset';
 const APP_FILES = [
   './',
   './index.html',
