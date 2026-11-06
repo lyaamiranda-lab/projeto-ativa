@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v9-configuracao-inicial';
+const CACHE_NAME = 'projeto-ativa-v10-editar-areas';
 const APP_FILES = [
   './',
   './index.html',
