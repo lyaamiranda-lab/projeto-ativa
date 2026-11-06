@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v17-cadastro-habitos';;;
+const CACHE_NAME = 'projeto-ativa-v18-dias-visiveis';;;;
 const APP_FILES = [
   './',
   './index.html',
