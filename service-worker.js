@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v10-editar-areas';
+const CACHE_NAME = 'projeto-ativa-v11-areas-personalizadas';
 const APP_FILES = [
   './',
   './index.html',
