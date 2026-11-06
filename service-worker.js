@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v14-cabecalho-personalizado';
+const CACHE_NAME = 'projeto-ativa-v15-prioridades';
 const APP_FILES = [
   './',
   './index.html',
