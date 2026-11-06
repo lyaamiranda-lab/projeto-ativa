@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v21-conquistas';;;;;;;
+const CACHE_NAME = 'projeto-ativa-v22-calendario-mensal';;;;;;;;
 const APP_FILES = [
   './',
   './index.html',
