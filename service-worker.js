@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v20-evolucao';;;;;;
+const CACHE_NAME = 'projeto-ativa-v21-conquistas';;;;;;;
 const APP_FILES = [
   './',
   './index.html',
