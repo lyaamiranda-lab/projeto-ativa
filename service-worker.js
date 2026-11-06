@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v27-restaurar-tela';;;;;;;;;;;;;
+const CACHE_NAME = 'projeto-ativa-v28-versao-estavel';;;;;;;;;;;;;
 const APP_FILES = [
   './',
   './index.html',
