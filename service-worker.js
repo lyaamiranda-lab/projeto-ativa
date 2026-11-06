@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v12-html-atualizado';
+const CACHE_NAME = 'projeto-ativa-v13-painel-hoje';
 const APP_FILES = [
   './',
   './index.html',
