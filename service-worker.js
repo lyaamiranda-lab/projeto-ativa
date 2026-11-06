@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v8-boas-vindas-azul';
+const CACHE_NAME = 'projeto-ativa-v9-configuracao-inicial';
 const APP_FILES = [
   './',
   './index.html',
