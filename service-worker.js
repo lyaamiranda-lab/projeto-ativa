@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v26-calendario-clique-corrigido';;;;;;;;;;;;
+const CACHE_NAME = 'projeto-ativa-v27-restaurar-tela';;;;;;;;;;;;;
 const APP_FILES = [
   './',
   './index.html',
