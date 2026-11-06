@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v7-rotina-cards';
+const CACHE_NAME = 'projeto-ativa-v8-boas-vindas-azul';
 const APP_FILES = [
   './',
   './index.html',
