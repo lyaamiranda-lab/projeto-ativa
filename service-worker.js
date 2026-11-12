@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v74-comparacao-mensal';
+const CACHE_NAME = 'projeto-ativa-v75-historico-mensal';
 const APP_FILES = [
   './',
   './index.html',
