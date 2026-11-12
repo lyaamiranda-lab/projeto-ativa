@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v30-metas-backup';
+const CACHE_NAME = 'projeto-ativa-v31-calendario-e-sync';
 const APP_FILES = [
   './',
   './index.html',
