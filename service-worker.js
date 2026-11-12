@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v79-biblioteca-habitos';
+const CACHE_NAME = 'projeto-ativa-v80-criar-habitos';
 const APP_FILES = [
   './',
   './index.html',
