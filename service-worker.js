@@ -1,9 +1,10 @@
-const CACHE_NAME = 'projeto-ativa-v70-fase2-fundacao';
+const CACHE_NAME = 'projeto-ativa-v70-fase2-modulos';
 const APP_FILES = [
   './',
   './index.html',
   './supabase-config.js',
   './phase2-data.js',
+  './phase2-ui.js',
   './manifest.webmanifest',
   './icons/icon.svg'
 ];
