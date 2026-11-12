@@ -19,7 +19,7 @@ function fieldHtml(field,index,section){const [name,label,type]=field;const id='
  if(type==='day')control='<select id="'+id+'">'+dayNames.map((d,i)=>'<option value="'+i+'">'+d+'</option>').join('')+'</select>';
  else if(type.startsWith('select:'))control='<select id="'+id+'">'+type.slice(7).split('|').map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('')+'</select>';
  else if(type==='textarea')control='<textarea id="'+id+'" rows="2" maxlength="6000"></textarea>';
- else control='<input id="'+id+'" type="'+type+'" '+(type==='number'?'min="1" max="600" step="1"':'')+(type==='date'?' value="'+today()+'"':'')+' maxlength="160">';
+ else {const limits={weightKg:'min="1" max="500" step="0.1"',waistCm:'min="1" max="300" step="0.1"',hipCm:'min="1" max="400" step="0.1"',durationMinutes:'min="1" max="600" step="1"'};control='<input id="'+id+'" type="'+type+'" '+(type==='number'?(limits[name]||'min="1" max="600" step="1"'):'')+(type==='date'?' value="'+today()+'"':'')+' maxlength="160">';}
  return '<div class="row"><label for="'+id+'">'+esc(label)+'</label>'+control+'</div>';
 }
 function form(section){const config=configs[section];return '<section class="panel"><h2>'+esc(config.title)+'</h2><p class="muted">Preencha apenas o que fizer sentido para você.</p>'+config.fields.map((field,index)=>fieldHtml(field,index,section)).join('')+'<button class="primary" onclick="ProjetoAtivaPhase2UI.add(\''+section+'\')">Salvar registro</button></section>'}
