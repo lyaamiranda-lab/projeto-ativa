@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v32-sync-segura';
+const CACHE_NAME = 'projeto-ativa-v33-backup-validado';
 const APP_FILES = [
   './',
   './index.html',
