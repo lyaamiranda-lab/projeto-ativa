@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v59-reconexao-sync';
+const CACHE_NAME = 'projeto-ativa-v60-sincronizacao-manual';
 const APP_FILES = [
   './',
   './index.html',
