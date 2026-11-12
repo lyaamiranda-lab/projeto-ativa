@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v75-historico-mensal';
+const CACHE_NAME = 'projeto-ativa-v76-metas-visuais';
 const APP_FILES = [
   './',
   './index.html',
