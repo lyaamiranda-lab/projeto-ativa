@@ -45,7 +45,7 @@ function render(tab,data){let sections=[];
  return '<section class="hero"><h1>'+esc(tab)+'</h1><p>Um passo de cada vez, no seu ritmo.</p></section>'+(tab==='Diário'?'<p class="note">Este diário é destinado ao uso privado na sua conta. Não há compartilhamento no aplicativo. A proteção depende da segurança da conta e das políticas do Supabase; não é criptografia ponta a ponta.</p>':'')+sections.map(s=>form(s)+list(s,data)).join('')+sectionLinks();
 }
 function add(section){const config=configs[section];if(!config)return;const item={id:'phase2-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)};config.fields.forEach(([field,,type],i)=>{const el=document.getElementById('phase2-field-'+section+'-'+i);if(!el)return;let value=el.value.trim();if(!value)return;if(type==='number')value=Number(value);if(type==='day')value=Number(value);item[field]=value});if(section==='exercisePlan')item.active=true;if(section==='exerciseRecords')item.completed=true;if(section==='homeTasks')item.completed=false;
- if(!item.activity&&!item.title&&!item.mood&&!item.text&&!item.practice){alert('Preencha pelo menos o campo principal.');return}
+ if(!item.activity&&!item.title&&!item.mood&&!item.text&&!item.practice&&!item.weightKg&&!item.waistCm&&!item.hipCm){alert('Preencha pelo menos o campo principal.');return}
  const next=window.ProjetoAtivaPhase2.normalize({[section]:[item]})[section];if(next.length!==1){alert('Confira os dados preenchidos e tente novamente.');return}
  const old=data[section];data[section]=[...(old||[]),next[0]];if(!save()){data[section]=old;alert('Não foi possível salvar. Seus dados anteriores foram preservados.');return}renderApp();
 }
