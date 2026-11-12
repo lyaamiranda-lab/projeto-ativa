@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v70-instalacao-pwa';
+const CACHE_NAME = 'projeto-ativa-v71-aviso-offline';
 const APP_FILES = [
   './',
   './index.html',
