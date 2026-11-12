@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v40-protecao-local';
+const CACHE_NAME = 'projeto-ativa-v41-texto-conta';
 const APP_FILES = [
   './',
   './index.html',
