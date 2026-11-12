@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v29-calendario-simples';;;;;;;;;;;;;
+const CACHE_NAME = 'projeto-ativa-v30-metas-backup';
 const APP_FILES = [
   './',
   './index.html',
