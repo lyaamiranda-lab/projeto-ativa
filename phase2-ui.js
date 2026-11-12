@@ -5,6 +5,7 @@ const dayNames=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
 const configs={
  exercisePlan:{title:'Planejamento semanal',fields:[['weekday','Dia','day'],['activity','Exercício','text'],['durationMinutes','Minutos previstos','number'],['notes','Observações','textarea']]},
  exerciseRecords:{title:'Exercícios realizados',fields:[['date','Data','date'],['activity','Atividade','text'],['durationMinutes','Duração (minutos)','number'],['intensity','Intensidade','select:leve|moderada|intensa'],['notes','Observações','textarea']]},
+ healthMetrics:{title:'Medidas de saúde (opcional)',fields:[['date','Data','date'],['weightKg','Peso (kg)','number'],['waistCm','Cintura (cm)','number'],['hipCm','Quadril (cm)','number'],['notes','Observações','textarea']]},
  moodEntries:{title:'Como me senti',fields:[['date','Data','date'],['mood','Humor','select:muito bem|bem|neutro|cansada|triste/sobrecarregada'],['factors','O que influenciou?','textarea'],['needs','Do que preciso?','textarea']]},
  journalEntries:{title:'Meu diário privado',fields:[['date','Data','date'],['text','Escrever sobre meu dia','textarea'],['gratefulFor','Sou grata por','textarea'],['bestPart','Melhor momento','textarea']]},
  spiritualEntries:{title:'Espiritualidade',fields:[['date','Data','date'],['practice','Prática','select:oração|bíblia|meditação|outra'],['reference','Versículo ou passagem','text'],['reflection','Reflexão','textarea']]},
@@ -25,11 +26,20 @@ function form(section){const config=configs[section];return '<section class="pan
 function list(section,data){const items=Array.isArray(data[section])?data[section]:[];return '<section class="panel"><h3>Registros ('+items.length+')</h3>'+(items.length?items.slice().reverse().slice(0,30).map((item,index)=>'<div class="habit"><div><b>'+esc(item.activity||item.title||item.practice||item.mood||item.text||item.date||'Registro')+'</b><small>'+esc([item.date,item.durationMinutes?item.durationMinutes+' min':'',item.notes||item.description||item.gratefulFor||''].filter(Boolean).join(' · '))+'</small></div><button class="secondary" onclick="ProjetoAtivaPhase2UI.removeAt(\''+section+'\','+(items.length-1-index)+')">Excluir</button></div>').join(''):'<p class="muted">Nenhum registro ainda.</p>')+'</section>'}
 function summary(data){const week=new Date();week.setDate(week.getDate()-6);const start=[week.getFullYear(),String(week.getMonth()+1).padStart(2,'0'),String(week.getDate()).padStart(2,'0')].join('-');const records=(data.exerciseRecords||[]).filter(x=>x.date>=start&&x.completed!==false);const minutes=records.reduce((n,x)=>n+(Number(x.durationMinutes)||0),0);return '<section class="panel"><h2>Minha evolução recente</h2><div class="stats"><div class="stat"><span>Exercícios em 7 dias</span><b>'+records.length+'</b></div><div class="stat"><span>Minutos de movimento</span><b>'+minutes+'</b></div><div class="stat"><span>Registros de humor</span><b>'+(data.moodEntries||[]).length+'</b></div><div class="stat"><span>Momentos em família</span><b>'+(data.familyEntries||[]).length+'</b></div></div></section>'}
 function sectionLinks(){return '<section class="panel"><h3>Outras áreas</h3><div class="actions">'+[['Rotina','Rotina'],['Metas','Metas'],['Pilares','Pilares'],['Calendário','Calendário'],['Espiritualidade','Espiritualidade'],['Lar e família','Lar e família']].map(([label,tab])=>'<button class="secondary" onclick="go(\''+tab+'\')">'+label+'</button>').join('')+'</div></section>'}
+function calendar(data){
+ const dates=[...new Set([...(data.exerciseRecords||[]).map(x=>x.date),...(data.moodEntries||[]).map(x=>x.date),...(data.journalEntries||[]).map(x=>x.date),...(data.spiritualEntries||[]).map(x=>x.date),...(data.homeTasks||[]).map(x=>x.date),...(data.familyEntries||[]).map(x=>x.date)])].filter(Boolean).sort().reverse().slice(0,40);
+ const rows=dates.map(date=>{
+  const groups=[['Exercícios',(data.exerciseRecords||[]).filter(x=>x.date===date).map(x=>x.activity)],['Humor',(data.moodEntries||[]).filter(x=>x.date===date).map(x=>x.mood)],['Diário',(data.journalEntries||[]).filter(x=>x.date===date).map(x=>'Registro pessoal')],['Espiritualidade',(data.spiritualEntries||[]).filter(x=>x.date===date).map(x=>x.practice)],['Casa',(data.homeTasks||[]).filter(x=>x.date===date).map(x=>x.title)],['Família',(data.familyEntries||[]).filter(x=>x.date===date).map(x=>x.activity)]].filter(g=>g[1].length);
+  return '<div class="habit"><div><b>'+esc(new Date(date+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'long',year:'numeric'}))+'</b><small>'+groups.map(g=>esc(g[0]+': '+g[1].join(', '))).join(' · ')+'</small></div></div>';
+ });
+ return '<section class="hero"><h1>Meu calendário</h1><p>Um histórico dos registros feitos nas diferentes áreas.</p></section><section class="panel">'+(rows.join('')||'<p class="muted">Seus registros aparecerão aqui quando você começar a usar as áreas da Fase 2.</p>')+'</section>';
+}
 function render(tab,data){let sections=[];
- if(tab==='Saúde')sections=['exercisePlan','exerciseRecords'];
+ if(tab==='Saúde')sections=['exercisePlan','exerciseRecords','healthMetrics'];
  if(tab==='Diário')sections=['moodEntries','journalEntries'];
  if(tab==='Espiritualidade')sections=['spiritualEntries'];
  if(tab==='Lar e família')sections=['homeTasks','familyEntries'];
+ if(tab==='Calendário')return calendar(data)+sectionLinks();
  if(tab==='Evolução 2')return summary(data)+sectionLinks();
  if(!sections.length)return '';
  return '<section class="hero"><h1>'+esc(tab)+'</h1><p>Um passo de cada vez, no seu ritmo.</p></section>'+sections.map(s=>form(s)+list(s,data)).join('')+sectionLinks();
