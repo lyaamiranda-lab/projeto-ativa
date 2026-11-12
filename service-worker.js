@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v70-fase2-modulos';
+const CACHE_NAME = 'projeto-ativa-v71-edicao-registros';
 const APP_FILES = [
   './',
   './index.html',
