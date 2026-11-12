@@ -1,8 +1,10 @@
-const CACHE_NAME = 'projeto-ativa-v69-icone-pwa';
+const CACHE_NAME = 'projeto-ativa-v71-edicao-registros';
 const APP_FILES = [
   './',
   './index.html',
   './supabase-config.js',
+  './phase2-data.js',
+  './phase2-ui.js',
   './manifest.webmanifest',
   './icons/icon.svg'
 ];
