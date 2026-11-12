@@ -53,6 +53,8 @@ Depois de validar com um pequeno grupo, implementar autenticação e banco de da
 
 Esta é uma integração inicial para teste. Antes de divulgar amplamente, valide cadastro, confirmação de e-mail, login, sincronização em dois navegadores e recuperação de senha. Não armazene informações sensíveis. A chave publicável é destinada ao cliente, mas a segurança depende das políticas RLS corretas. O app mantém o armazenamento local; no primeiro login, se já houver dados na nuvem, ele pergunta qual conjunto manter.
 
+**Atualização de segurança:** a comparação de versão usa `IS NOT DISTINCT FROM`, que também trata corretamente valores nulos de `updated_at`. Se você já executou uma versão anterior desse script, execute novamente o conteúdo atualizado do arquivo SQL para substituir a função.
+
 ## Proteção de sincronização entre aparelhos
 
 Foi preparado o script `supabase/migrations/20261112_protected_sync.sql`, que cria a função `save_user_app_data`. Ela só atualiza o registro se a versão no banco ainda for a mesma que o aparelho leu, evitando sobrescrever silenciosamente alterações feitas em outro aparelho.
