@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v54-historico-completo';
+const CACHE_NAME = 'projeto-ativa-v55-lembrete-validado';
 const APP_FILES = [
   './',
   './index.html',
