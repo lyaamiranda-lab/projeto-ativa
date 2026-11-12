@@ -1,11 +1,10 @@
-const CACHE_NAME = 'projeto-ativa-v68-validacao-metas';
+const CACHE_NAME = 'projeto-ativa-v69-icone-pwa';
 const APP_FILES = [
   './',
   './index.html',
   './supabase-config.js',
   './manifest.webmanifest',
-  './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon.svg'
 ];
 
 self.addEventListener('install', event => {
