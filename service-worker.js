@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v52-evolucao-rotina';
+const CACHE_NAME = 'projeto-ativa-v53-calendario-integrado';
 const APP_FILES = [
   './',
   './index.html',
