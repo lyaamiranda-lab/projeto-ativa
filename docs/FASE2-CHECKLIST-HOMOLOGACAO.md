@@ -28,6 +28,7 @@ Esta lista é para a versão de prévia da branch `fase-2-planejamento`. Não ex
 - [ ] Confirmar que dados inválidos ou datas impossíveis não quebram a tela.
 - [ ] Confirmar que textos digitados pelo usuário são exibidos como texto, nunca interpretados como HTML.
 - [ ] Validar cada módulo da Fase 2 individualmente quando a interface estiver implementada.
+- [ ] Conferir o resumo diário da tela inicial com exercícios, tarefas e humor registrados.
 - [ ] Testar edição, cancelamento e exclusão de registros em navegador real.
 
 ## Limites desta etapa
