@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v37-sync-serializada';
+const CACHE_NAME = 'projeto-ativa-v38-fila-sync';
 const APP_FILES = [
   './',
   './index.html',
