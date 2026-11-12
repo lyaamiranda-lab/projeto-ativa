@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v39-sync-protegida';
+const CACHE_NAME = 'projeto-ativa-v40-protecao-local';
 const APP_FILES = [
   './',
   './index.html',
