@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v57-recuperacao-local';
+const CACHE_NAME = 'projeto-ativa-v58-download-recuperacao';
 const APP_FILES = [
   './',
   './index.html',
