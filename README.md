@@ -52,3 +52,15 @@ Depois de validar com um pequeno grupo, implementar autenticação e banco de da
 5. Se a confirmação por e-mail estiver ativa, confirme o e-mail antes de entrar.
 
 Esta é uma integração inicial para teste. Antes de divulgar amplamente, valide cadastro, confirmação de e-mail, login, sincronização em dois navegadores e recuperação de senha. Não armazene informações sensíveis. A chave publicável é destinada ao cliente, mas a segurança depende das políticas RLS corretas. O app mantém o armazenamento local; no primeiro login, se já houver dados na nuvem, ele pergunta qual conjunto manter.
+
+## Proteção de sincronização entre aparelhos
+
+Foi preparado o script `supabase/migrations/20261112_protected_sync.sql`, que cria a função `save_user_app_data`. Ela só atualiza o registro se a versão no banco ainda for a mesma que o aparelho leu, evitando sobrescrever silenciosamente alterações feitas em outro aparelho.
+
+**Etapa necessária antes de ativar essa proteção no aplicativo:**
+1. No painel do Supabase, abra **SQL Editor**.
+2. Abra o arquivo `supabase/migrations/20261112_protected_sync.sql` neste repositório e copie todo o conteúdo.
+3. Cole no SQL Editor e clique em **Run**.
+4. Só depois de confirmar a execução, a integração do aplicativo poderá passar a usar a gravação protegida.
+
+O script não apaga os dados existentes. Ele depende da tabela `public.user_app_data`, da coluna `updated_at` do tipo `timestamptz` e das políticas RLS de acesso do próprio usuário.
