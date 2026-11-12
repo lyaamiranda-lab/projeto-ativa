@@ -28,6 +28,7 @@ Esta lista é para a versão de prévia da branch `fase-2-planejamento`. Não ex
 - [ ] Confirmar que dados inválidos ou datas impossíveis não quebram a tela.
 - [ ] Confirmar que textos digitados pelo usuário são exibidos como texto, nunca interpretados como HTML.
 - [ ] Validar cada módulo da Fase 2 individualmente quando a interface estiver implementada.
+- [ ] Testar edição, cancelamento e exclusão de registros em navegador real.
 
 ## Limites desta etapa
-A interface inicial para criar e excluir registros está implementada, mas ainda não há edição dos registros já salvos. A prévia usa armazenamento local isolado e não testa sincronização em nuvem; isso exige um ambiente Supabase de homologação separado. As verificações estáticas não substituem testes em navegador real. A versão de prévia não foi publicada no GitHub Pages e nenhuma alteração foi mesclada em `main`.
+A interface inicial permite criar, editar, concluir tarefas e excluir registros. A prévia usa armazenamento local isolado e não testa sincronização em nuvem; isso exige um ambiente Supabase de homologação separado. As verificações estáticas não substituem testes em navegador real. A versão de prévia não foi publicada no GitHub Pages e nenhuma alteração foi mesclada em `main`.
