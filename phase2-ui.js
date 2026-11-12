@@ -46,7 +46,7 @@ function render(tab,data){let sections=[];
 }
 function add(section){const config=configs[section];if(!config)return;const current=editing&&editing.section===section?(data[section]||[]).find(x=>x.id===editing.id):null;const item={id:current?current.id:'phase2-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)};config.fields.forEach(([field,,type],i)=>{const el=document.getElementById('phase2-field-'+section+'-'+i);if(!el)return;let value=el.value.trim();if(!value)return;if(type==='number')value=Number(value);if(type==='day')value=Number(value);item[field]=value});
  if(section==='exercisePlan')item.active=current?current.active!==false:true;if(section==='exerciseRecords')item.completed=current?current.completed!==false:true;if(section==='homeTasks')item.completed=current?current.completed===true:false;
- if(!item.activity&&!item.title&&!item.mood&&!item.text&&!item.practice&&!item.weightKg&&!item.waistCm&&!item.hipCm){alert('Preencha pelo menos o campo principal.');return}
+ if(!item.activity&&!item.title&&!item.mood&&!item.text&&!item.gratefulFor&&!item.bestPart&&!item.practice&&!item.weightKg&&!item.waistCm&&!item.hipCm){alert('Preencha pelo menos o campo principal.');return}
  const next=window.ProjetoAtivaPhase2.normalize({[section]:[item]})[section];if(next.length!==1){alert('Confira os dados preenchidos e tente novamente.');return}
  const old=data[section]||[];data[section]=current?old.map(x=>x.id===current.id?next[0]:x):[...old,next[0]];if(!save()){data[section]=old;alert('Não foi possível salvar. Seus dados anteriores foram preservados.');return}editing=null;renderApp();
 }
