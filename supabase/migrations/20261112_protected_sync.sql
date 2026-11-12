@@ -24,7 +24,7 @@ begin
   on conflict (user_id) do update
     set app_data = excluded.app_data,
         updated_at = excluded.updated_at
-    where public.user_app_data.updated_at = p_expected_updated_at
+    where public.user_app_data.updated_at is not distinct from p_expected_updated_at
   returning updated_at into v_saved_at;
 
   if not found then
