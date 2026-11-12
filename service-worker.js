@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v47-edicoes-seguras';
+const CACHE_NAME = 'projeto-ativa-v48-registros-protegidos';
 const APP_FILES = [
   './',
   './index.html',
