@@ -40,6 +40,6 @@ function add(section){const config=configs[section];if(!config)return;const item
  const old=data[section];data[section]=[...(old||[]),next[0]];if(!save()){data[section]=old;alert('Não foi possível salvar. Seus dados anteriores foram preservados.');return}renderApp();
 }
 function remove(section,id){if(!configs[section]||!confirm('Excluir este registro?'))return;const old=data[section];data[section]=(old||[]).filter(x=>x.id!==id);if(!save()){data[section]=old;alert('Não foi possível excluir. Seus dados anteriores foram preservados.');return}renderApp()}
-function renderApp(){renderGlobal()}
+function renderApp(){root.render()}
 root.ProjetoAtivaPhase2UI={render,add,remove};
 })(window);
