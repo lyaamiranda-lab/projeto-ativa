@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v31-calendario-e-sync';
+const CACHE_NAME = 'projeto-ativa-v32-sync-segura';
 const APP_FILES = [
   './',
   './index.html',
