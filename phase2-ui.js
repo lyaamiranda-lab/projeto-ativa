@@ -1,0 +1,45 @@
+/* Projeto Ativa — telas da Fase 2 (prévia; sem alterações na produção). */
+(function(root){
+'use strict';
+const dayNames=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const configs={
+ exercisePlan:{title:'Planejamento semanal',fields:[['weekday','Dia','day'],['activity','Exercício','text'],['durationMinutes','Minutos previstos','number'],['notes','Observações','textarea']]},
+ exerciseRecords:{title:'Exercícios realizados',fields:[['date','Data','date'],['activity','Atividade','text'],['durationMinutes','Duração (minutos)','number'],['intensity','Intensidade','select:leve|moderada|intensa'],['notes','Observações','textarea']]},
+ moodEntries:{title:'Como me senti',fields:[['date','Data','date'],['mood','Humor','select:muito bem|bem|neutro|cansada|triste/sobrecarregada'],['factors','O que influenciou?','textarea'],['needs','Do que preciso?','textarea']]},
+ journalEntries:{title:'Meu diário privado',fields:[['date','Data','date'],['text','Escrever sobre meu dia','textarea'],['gratefulFor','Sou grata por','textarea'],['bestPart','Melhor momento','textarea']]},
+ spiritualEntries:{title:'Espiritualidade',fields:[['date','Data','date'],['practice','Prática','select:oração|bíblia|meditação|outra'],['reference','Versículo ou passagem','text'],['reflection','Reflexão','textarea']]},
+ homeTasks:{title:'Tarefas da casa',fields:[['date','Data','date'],['title','Tarefa','text'],['category','Categoria','select:limpeza|roupas|cozinha|compras|organização|outro'],['recurrence','Frequência','select:única|diária|semanal|mensal'],['notes','Observações','textarea']]},
+ familyEntries:{title:'Momentos em família',fields:[['date','Data','date'],['activity','Momento','text'],['people','Com quem','text'],['description','O que quero lembrar','textarea']]}
+};
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function today(){const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function fieldHtml(field,index){const [name,label,type]=field;const id='phase2-field-'+index;
+ let control='';
+ if(type==='day')control='<select id="'+id+'">'+dayNames.map((d,i)=>'<option value="'+i+'">'+d+'</option>').join('')+'</select>';
+ else if(type.startsWith('select:'))control='<select id="'+id+'">'+type.slice(7).split('|').map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('')+'</select>';
+ else if(type==='textarea')control='<textarea id="'+id+'" rows="2" maxlength="6000"></textarea>';
+ else control='<input id="'+id+'" type="'+type+'" '+(type==='number'?'min="1" max="600" step="1"':'')+(type==='date'?' value="'+today()+'"':'')+' maxlength="160">';
+ return '<div class="row"><label for="'+id+'">'+esc(label)+'</label>'+control+'</div>';
+}
+function form(section){const config=configs[section];return '<section class="panel"><h2>'+esc(config.title)+'</h2><p class="muted">Preencha apenas o que fizer sentido para você.</p>'+config.fields.map(fieldHtml).join('')+'<button class="primary" onclick="ProjetoAtivaPhase2UI.add(\''+section+'\')">Salvar registro</button></section>'}
+function list(section,data){const items=Array.isArray(data[section])?data[section]:[];return '<section class="panel"><h3>Registros ('+items.length+')</h3>'+(items.length?items.slice().reverse().slice(0,30).map(item=>'<div class="habit"><div><b>'+esc(item.activity||item.title||item.practice||item.mood||item.text||item.date||'Registro')+'</b><small>'+esc([item.date,item.durationMinutes?item.durationMinutes+' min':'',item.notes||item.description||item.gratefulFor||''].filter(Boolean).join(' · '))+'</small></div><button class="secondary" onclick="ProjetoAtivaPhase2UI.remove(\''+section+'\',\''+esc(item.id)+'\')">Excluir</button></div>').join(''):'<p class="muted">Nenhum registro ainda.</p>')+'</section>'}
+function summary(data){const week=new Date();week.setDate(week.getDate()-6);const start=[week.getFullYear(),String(week.getMonth()+1).padStart(2,'0'),String(week.getDate()).padStart(2,'0')].join('-');const records=(data.exerciseRecords||[]).filter(x=>x.date>=start&&x.completed!==false);const minutes=records.reduce((n,x)=>n+(Number(x.durationMinutes)||0),0);return '<section class="panel"><h2>Minha evolução recente</h2><div class="stats"><div class="stat"><span>Exercícios em 7 dias</span><b>'+records.length+'</b></div><div class="stat"><span>Minutos de movimento</span><b>'+minutes+'</b></div><div class="stat"><span>Registros de humor</span><b>'+(data.moodEntries||[]).length+'</b></div><div class="stat"><span>Momentos em família</span><b>'+(data.familyEntries||[]).length+'</b></div></div></section>'}
+function sectionLinks(){return '<section class="panel"><h3>Outras áreas</h3><div class="actions">'+[['Rotina','Rotina'],['Metas','Metas'],['Pilares','Pilares'],['Calendário','Calendário'],['Espiritualidade','Espiritualidade'],['Lar e família','Lar e família']].map(([label,tab])=>'<button class="secondary" onclick="go(\''+tab+'\')">'+label+'</button>').join('')+'</div></section>'}
+function render(tab,data){let sections=[];
+ if(tab==='Saúde')sections=['exercisePlan','exerciseRecords'];
+ if(tab==='Diário')sections=['moodEntries','journalEntries'];
+ if(tab==='Espiritualidade')sections=['spiritualEntries'];
+ if(tab==='Lar e família')sections=['homeTasks','familyEntries'];
+ if(tab==='Evolução 2')return summary(data)+sectionLinks();
+ if(!sections.length)return '';
+ return '<section class="hero"><h1>'+esc(tab)+'</h1><p>Um passo de cada vez, no seu ritmo.</p></section>'+sections.map(s=>form(s)+list(s,data)).join('')+sectionLinks();
+}
+function add(section){const config=configs[section];if(!config)return;const item={id:'phase2-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)};config.fields.forEach(([field,,type],i)=>{const el=document.getElementById('phase2-field-'+i);if(!el)return;let value=el.value.trim();if(!value)return;if(type==='number')value=Number(value);if(type==='day')value=Number(value);item[field]=value});if(section==='exercisePlan')item.active=true;if(section==='exerciseRecords')item.completed=true;if(section==='homeTasks')item.completed=false;
+ if(!item.activity&&!item.title&&!item.mood&&!item.text&&!item.practice){alert('Preencha pelo menos o campo principal.');return}
+ const next=window.ProjetoAtivaPhase2.normalize({[section]:[item]})[section];if(next.length!==1){alert('Confira os dados preenchidos e tente novamente.');return}
+ const old=data[section];data[section]=[...(old||[]),next[0]];if(!save()){data[section]=old;alert('Não foi possível salvar. Seus dados anteriores foram preservados.');return}renderApp();
+}
+function remove(section,id){if(!configs[section]||!confirm('Excluir este registro?'))return;const old=data[section];data[section]=(old||[]).filter(x=>x.id!==id);if(!save()){data[section]=old;alert('Não foi possível excluir. Seus dados anteriores foram preservados.');return}renderApp()}
+function renderApp(){renderGlobal()}
+root.ProjetoAtivaPhase2UI={render,add,remove};
+})(window);
