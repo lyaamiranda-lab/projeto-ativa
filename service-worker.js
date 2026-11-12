@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v61-acessibilidade-mobile';
+const CACHE_NAME = 'projeto-ativa-v62-controles-acessiveis';
 const APP_FILES = [
   './',
   './index.html',
