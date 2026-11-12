@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v64-sincronizacao-offline';
+const CACHE_NAME = 'projeto-ativa-v65-validacao-dias';
 const APP_FILES = [
   './',
   './index.html',
