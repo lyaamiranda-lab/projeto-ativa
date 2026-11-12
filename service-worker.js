@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v76-metas-visuais';
+const CACHE_NAME = 'projeto-ativa-v77-habitos-metas';
 const APP_FILES = [
   './',
   './index.html',
