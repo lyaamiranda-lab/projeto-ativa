@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v63-nomes-rotina';
+const CACHE_NAME = 'projeto-ativa-v64-sincronizacao-offline';
 const APP_FILES = [
   './',
   './index.html',
