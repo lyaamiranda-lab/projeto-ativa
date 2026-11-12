@@ -29,6 +29,8 @@ Esta lista é para a versão de prévia da branch `fase-2-planejamento`. Não ex
 - [ ] Confirmar que textos digitados pelo usuário são exibidos como texto, nunca interpretados como HTML.
 - [ ] Validar cada módulo da Fase 2 individualmente quando a interface estiver implementada.
 - [ ] Conferir o resumo diário da tela inicial com exercícios, tarefas e humor registrados.
+- [ ] Conferir os indicadores semanais de movimento, humor, espiritualidade, tarefas e momentos em família.
+- [ ] Testar o salvamento do diário usando somente o campo de gratidão ou melhor momento.
 - [ ] Testar edição, cancelamento e exclusão de registros em navegador real.
 
 ## Limites desta etapa
