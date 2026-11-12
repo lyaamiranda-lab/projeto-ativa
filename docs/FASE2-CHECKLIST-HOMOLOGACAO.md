@@ -9,6 +9,8 @@ Esta lista é para a versão de prévia da branch `fase-2-planejamento`. Não ex
 - [x] A prévia desativa autenticação e sincronização Supabase para impedir gravação acidental na conta de produção.
 - [x] O calendário integrado está roteado para o módulo da Fase 2.
 - [x] Os formulários iniciais e ações de concluir/excluir passaram pela verificação estática.
+- [x] Teste isolado da normalização: dados antigos preservados, registro válido mantido, data impossível rejeitada e limite de 500 registros aplicado.
+- [x] Resumo de evolução ajustado para considerar os últimos sete dias nos indicadores semanais.
 - [x] A normalização roda na inicialização dos dados locais.
 - [x] Dados recebidos da nuvem passam pela mesma normalização.
 - [x] Backups importados passam pela mesma normalização.
