@@ -32,6 +32,7 @@ Esta lista é para a versão de prévia da branch `fase-2-planejamento`. Não ex
 - [ ] Conferir os indicadores semanais de movimento, humor, espiritualidade, tarefas e momentos em família.
 - [ ] Testar o salvamento do diário usando somente o campo de gratidão ou melhor momento.
 - [ ] Testar edição, cancelamento e exclusão de registros em navegador real.
+- [ ] Conferir os resumos de cada tipo de registro (medidas, diário, humor, espiritualidade e família).
 
 ## Limites desta etapa
 A interface inicial permite criar, editar, concluir tarefas e excluir registros. A prévia usa armazenamento local isolado e não testa sincronização em nuvem; isso exige um ambiente Supabase de homologação separado. As verificações estáticas não substituem testes em navegador real. A versão de prévia não foi publicada no GitHub Pages e nenhuma alteração foi mesclada em `main`.
