@@ -76,7 +76,9 @@
     for (const field of schema.fields) {
       if (!Object.prototype.hasOwnProperty.call(record, field)) continue;
       const value = record[field];
-      if (schema.strings && schema.strings[field]) {
+      if (schema.enums && schema.enums[field]) {
+        if (typeof value === 'string' && schema.enums[field].includes(value)) clean[field] = value;
+      } else if (schema.strings && schema.strings[field]) {
         if (typeof value !== 'string') continue;
         clean[field] = value.slice(0, schema.strings[field]);
       } else if (schema.numbers && schema.numbers[field]) {
@@ -85,8 +87,6 @@
         clean[field] = value;
       } else if (schema.booleans && schema.booleans.includes(field)) {
         if (typeof value === 'boolean') clean[field] = value;
-      } else if (schema.enums && schema.enums[field]) {
-        if (schema.enums[field].includes(value)) clean[field] = value;
       }
     }
     if (schema.dates) {
