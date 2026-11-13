@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v85-espiritual';
+const CACHE_NAME = 'projeto-ativa-v86-lar';
 const APP_FILES = [
   './',
   './index.html',
