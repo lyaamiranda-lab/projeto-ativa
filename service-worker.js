@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v93-migracao-corrigida';
+const CACHE_NAME = 'projeto-ativa-v94-limpeza-cloud';
 const APP_FILES = [
   './',
   './index.html',
