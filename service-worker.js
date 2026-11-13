@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v87-lar-ajuste';
+const CACHE_NAME = 'projeto-ativa-v88-conexoes';
 const APP_FILES = [
   './',
   './index.html',
