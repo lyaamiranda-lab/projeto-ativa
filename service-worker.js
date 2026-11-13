@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v91-ajuste-conexoes';
+const CACHE_NAME = 'projeto-ativa-v92-limpeza-habitos';
 const APP_FILES = [
   './',
   './index.html',
