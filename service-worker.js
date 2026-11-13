@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v88-conexoes';
+const CACHE_NAME = 'projeto-ativa-v89-dica-de-ouro';
 const APP_FILES = [
   './',
   './index.html',
