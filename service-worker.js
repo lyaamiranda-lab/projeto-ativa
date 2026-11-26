@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v96-evolucao-sem-pessoal';
+const CACHE_NAME = 'projeto-ativa-v97-lembretes-habitos';
 const APP_FILES = [
   './',
   './index.html',
