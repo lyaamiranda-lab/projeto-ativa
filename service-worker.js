@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v95-checklist-por-data';
+const CACHE_NAME = 'projeto-ativa-v96-evolucao-sem-pessoal';
 const APP_FILES = [
   './',
   './index.html',
