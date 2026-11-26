@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v97-lembretes-habitos';
+const CACHE_NAME = 'ativa-habitus-v98-lembretes-habitos';
 const APP_FILES = [
   './',
   './index.html',
