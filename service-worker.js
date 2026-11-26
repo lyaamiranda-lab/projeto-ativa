@@ -1,4 +1,4 @@
-const CACHE_NAME = 'projeto-ativa-v94-limpeza-cloud';
+const CACHE_NAME = 'projeto-ativa-v95-checklist-por-data';
 const APP_FILES = [
   './',
   './index.html',
