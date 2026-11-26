@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ativa-habitus-v101-correcao-horario';
+const CACHE_NAME = 'ativa-habitus-v102-horario-inline';
 const APP_FILES = [
   './',
   './index.html',
