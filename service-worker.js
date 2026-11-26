@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ativa-habitus-v106-aviso-permissao-lembretes';
+const CACHE_NAME = 'ativa-habitus-v107-avisos-so-ao-configurar-lembrete';
 const APP_FILES = [
   './',
   './index.html',
