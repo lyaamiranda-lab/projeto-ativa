@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ativa-habitus-v108-ajuda-permissao-chrome';
+const CACHE_NAME = 'ativa-habitus-v109-solicitar-permissao-ao-escolher-horario';
 const APP_FILES = [
   './',
   './index.html',
