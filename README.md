@@ -13,7 +13,7 @@ Aplicativo pessoal para organizar hábitos, rotina, metas e evolução, com inte
 - Instalação como PWA e suporte offline básico para abrir a interface já armazenada.
 
 ## Limites importantes
-- Os lembretes são apenas uma preferência de horário; notificações automáticas ainda não estão implementadas.
+- Os lembretes locais dependem do aplicativo aberto. O envio em segundo plano exige concluir a configuração de Push, Edge Function e agendamento no Supabase descrita abaixo.
 - A sincronização depende da configuração correta do Supabase, da tabela e das políticas RLS.
 - A cópia de recuperação fica no navegador daquele aparelho. Mantenha também um arquivo de backup exportado em local seguro.
 - Não use o aplicativo para armazenar dados médicos, financeiros sigilosos ou outras informações altamente sensíveis.
@@ -55,3 +55,13 @@ Foi preparado o script `supabase/migrations/20261112_protected_sync.sql`, que cr
 4. Só depois de confirmar a execução, a integração do aplicativo poderá passar a usar a gravação protegida.
 
 O script não apaga os dados existentes. Ele depende da tabela `public.user_app_data`, da coluna `updated_at` do tipo `timestamptz` e das políticas RLS de acesso do próprio usuário.
+
+
+## Lembretes em segundo plano (configuração ainda necessária)
+
+Foram adicionados os arquivos-base para notificações Push:
+- `supabase/migrations/20261127_habit_push_notifications.sql`: tabelas de inscrições e controle de envios.
+- `supabase/functions/send-habit-reminders/index.ts`: função que consulta os hábitos e envia notificações Web Push.
+- O service worker recebe o Push e abre o Ativa Habitus ao tocar no aviso.
+
+**Importante:** o recurso só funcionará depois que a migração for executada, a Edge Function for publicada e os segredos e o agendamento forem configurados no Supabase. O botão no aplicativo registra o aparelho na conta; ele não substitui essas etapas de servidor. Nunca coloque a chave privada VAPID nem a chave service_role em arquivos públicos do GitHub.
