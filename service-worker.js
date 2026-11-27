@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ativa-habitus-v109-solicitar-permissao-ao-escolher-horario';
+const CACHE_NAME = 'ativa-habitus-v110-push-em-segundo-plano';
 const APP_FILES = [
   './',
   './index.html',
@@ -57,4 +57,33 @@ self.addEventListener('fetch', event => {
       });
     })
   );
+});
+
+
+// Recebe avisos enviados pelo servidor mesmo quando o aplicativo não está aberto.
+self.addEventListener('push', event => {
+  let payload = {};
+  try { payload = event.data ? event.data.json() : {}; } catch { payload = { body: event.data?.text() || '' }; }
+  const title = payload.title || 'Está na hora de cuidar de você 🌿';
+  const options = {
+    body: payload.body || 'Um pequeno passo também conta.',
+    icon: './icons/icon.svg',
+    badge: './icons/icon.svg',
+    tag: payload.tag || 'ativa-habitus-lembrete',
+    data: { url: payload.url || '/projeto-ativa/' },
+    renotify: false
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const target = new URL(event.notification.data?.url || '/projeto-ativa/', self.location.origin).href;
+  event.waitUntil((async () => {
+    const clientsList = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clientsList) {
+      if (client.url.startsWith(self.location.origin) && 'focus' in client) return client.focus();
+    }
+    if (self.clients.openWindow) return self.clients.openWindow(target);
+  })());
 });
