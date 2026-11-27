@@ -65,3 +65,13 @@ Foram adicionados os arquivos-base para notificações Push:
 - O service worker recebe o Push e abre o Ativa Habitus ao tocar no aviso.
 
 **Importante:** o recurso só funcionará depois que a migração for executada, a Edge Function for publicada e os segredos e o agendamento forem configurados no Supabase. O botão no aplicativo registra o aparelho na conta; ele não substitui essas etapas de servidor. Nunca coloque a chave privada VAPID nem a chave service_role em arquivos públicos do GitHub.
+
+### Etapas para concluir a ativação
+
+1. No Supabase, abra **SQL Editor** e execute todo o arquivo `supabase/migrations/20261127_habit_push_notifications.sql` deste repositório.
+2. Publique a Edge Function `send-habit-reminders` usando o arquivo `supabase/functions/send-habit-reminders/index.ts`. O arquivo `supabase/config.toml` desativa a validação JWT padrão porque a função valida um segredo próprio de agendamento.
+3. Em **Edge Functions → Secrets**, configure `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` e `HABIT_PUSH_CRON_SECRET`. A chave pública já está no `supabase-config.js`; a chave privada deve ficar somente nos Secrets do Supabase. Use como assunto VAPID um endereço de contato válido no formato `mailto:seu-email`.
+4. Em **Cron**, crie uma execução a cada minuto para fazer POST em `https://ewgqlchnvdnbuovjrlef.supabase.co/functions/v1/send-habit-reminders`, com cabeçalho `x-cron-secret: (o mesmo valor de HABIT_PUSH_CRON_SECRET)` e corpo JSON `{}`.
+5. No Ativa Habitus, entre na conta, abra Ajustes e toque em **Habilitar lembretes com o app fechado** em cada aparelho que deverá receber os avisos.
+
+O envio depende de internet no aparelho e do suporte do navegador/sistema operacional a Web Push. O primeiro teste deve ser feito com um hábito programado para alguns minutos à frente, sem marcá-lo como concluído naquele dia.
